@@ -1,0 +1,19 @@
+[package]
+name = "safedeal"
+version = "0.1.0"
+description = "Безопасная сделка для грузоперевозок — десктоп-клиент"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+# Ни одного плагина (fs, shell, http, dialog): окно не получает доступа к ОС.
+tauri = { version = "2", features = [] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true
